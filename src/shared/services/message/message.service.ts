@@ -50,26 +50,26 @@ export class MessageService {
   }
 
   /**
-   * Fonction createChannel.
-   * Cette fonction permet l'envoi d'un channel. Elle prend en paramêtre:
+   * Fonction sendMessage.
+   * Cette fonction permet l'envoi d'un message. Elle prend en paramêtre:
    * - route: La route est la fin de l'url. Elle sera concaténée à l'attribut this.url pour former l'url complète. Pour
    *          l'envoie des messages la route doit avoir la structure suivante: :id/messages avec ":id" étant un nombre
    *          entier correspondant à l'identifiant (id) du channel.
    *          Exemple de route: 1/messages
-   * - channel: Le channel à envoyer. Ce channel est de type MessageModel.
+   * - message: Le message à envoyer. Ce message est de type MessageModel.
    * @param route
    * @param message
    */
   public sendMessage(route: string, message: MessageModel) {
 
     const finalUrl = this.url + route;
-    this.http.post(finalUrl, message).subscribe((e) => this.extractMessageAndGetMessages(e, route));
+    this.http.post(finalUrl,message).subscribe((e)=> this.extractMessageAndGetMessages(e,route));
   }
 
   /**
    * Fonction extractAndUpdateMessageList.
    * Cette fonction permet d'extraire la liste des messages de la 'response' reçue et ensuite de mettre à jour la liste
-   * des channel dans l'observable messageList$.
+   * des message dans l'observable messageList$.
    * Elle est appelée dans la fonction getMessages et permet de directement récuperer une liste de MessageModel. Pour récupérer
    * les données de la reponse, il suffit d'appeler la fonction .json() qui retourne le body de la réponse.
    * @param response
@@ -82,7 +82,7 @@ export class MessageService {
   /**
    * Fonction extractMessage.
    * Cette fonction permet d'extraire les données reçues à travers les requêtes HTTP. Elle est appelée dans la fonction
-   * createChannel et permet de directement récuperer un MessageModel.
+   * sendMessage et permet de directement récuperer un MessageModel.
    * Elle va également faire un nouvel appel pour récupérer la liste complete des messages pour pouvoir mettre à jour la
    * liste des messages dans les composants.
    * @param response
@@ -91,6 +91,6 @@ export class MessageService {
    */
   private extractMessageAndGetMessages(response: Response, route: string): MessageModel {
     this.getMessages(route);
-    return response.json() || [];
+    return response.json()|| [];
   }
 }

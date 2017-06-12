@@ -15,16 +15,16 @@ export class MessageFormComponent implements OnInit {
 
   constructor(private messageService: MessageService) {
     this.message = new MessageModel(1, "Hello", "moi");
-    this.route = "1/messages  ";
+    this.route = "2/messages";
   }
 
   ngOnInit() { }
 
   /**
-   * Fonction pour envoyer un channel.
-   * L'envoi du channel se fait à travers la methode createChannel du service MessageService.
-   * Cette méthode prend en paramètre la route pour envoyer un channel (:id/messages avec id un entier correspondant à l'id du channel)
-   * ainsi que le channel à envoyer. Ce dernier correspond à l'objet MessageModel que l'utilisateur rempli à travers l'input.
+   * Fonction pour envoyer un message.
+   * L'envoi du message se fait à travers la methode sendMessage du service MessageService.
+   * Cette méthode prend en paramètre la route pour envoyer un message (:id/messages avec id un entier correspondant à l'id du channel)
+   * ainsi que le message à envoyer. Ce dernier correspond à l'objet MessageModel que l'utilisateur rempli à travers l'input.
    */
   sendMessage() {
     this.messageService.sendMessage(this.route, this.message);
