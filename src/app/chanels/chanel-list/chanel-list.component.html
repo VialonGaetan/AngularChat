@@ -1,0 +1,6 @@
+<!-- On boucle sur tous les messages de notre liste de messages stockés dans messageList -->
+<div *ngFor="let currentChanel of chanelList">
+  <!--CurrentMessage estchanelsage courant dans la boucle -->
+  <!--On donne nochanelsage courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
+  <app-chanel [chanel]="cur$"></app-chanel>
+</div>

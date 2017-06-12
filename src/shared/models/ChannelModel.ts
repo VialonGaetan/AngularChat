@@ -5,22 +5,22 @@
 export class ChanelModel {
 
   /**
-   * Identifiant du chanel.
+   * Identifiant du chanels.
    */
   public id: number;
 
   /**
-   * Nom du chanel
+   * Nom du chanels
    */
   public name: string;
 
   /**
-   * Date de creation du chanel.
+   * Date de creation du chanels.
    */
   public createdAt: string;
 
   /**
-   * Date à laquelle le chanel a eu la dernière modification.
+   * Date à laquelle le chanels a eu la dernière modification.
    */
   public updatedAt: string;
 
