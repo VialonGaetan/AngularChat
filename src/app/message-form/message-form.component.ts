@@ -27,7 +27,6 @@ export class MessageFormComponent implements OnInit {
    * ainsi que le message à envoyer. Ce dernier correspond à l'objet MessageModel que l'utilisateur rempli à travers l'input.
    */
   sendMessage() {
-    console.log("Click!");
     this.messageService.sendMessage(this.route, this.message);
   }
 }

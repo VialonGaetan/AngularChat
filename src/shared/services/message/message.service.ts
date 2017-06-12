@@ -61,6 +61,10 @@ export class MessageService {
    * @param message
    */
   public sendMessage(route: string, message: MessageModel) {
+
+    const finalUrl = this.url + route;
+    this.http.post(finalUrl,message).subscribe((e)=>console.log(e));
+    this.getMessages(route);
     // Je suis vide :(
     // Tu peux trouver des infos sur moi dans le README !
   }
