@@ -15,7 +15,7 @@ export class MessageFormComponent implements OnInit {
 
   constructor(private messageService: MessageService) {
     this.message = new MessageModel(1, "Hello", "moi");
-    this.route = "1/messages";
+    this.route = "1/messages  ";
   }
 
   ngOnInit() { }
@@ -27,7 +27,6 @@ export class MessageFormComponent implements OnInit {
    * ainsi que le channel à envoyer. Ce dernier correspond à l'objet MessageModel que l'utilisateur rempli à travers l'input.
    */
   sendMessage() {
-    console.log("Click!");
     this.messageService.sendMessage(this.route, this.message);
   }
 }
