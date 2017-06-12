@@ -49,4 +49,13 @@ export class ChannelService {
     this.chanelList$.next(chanelList); // On pousse les nouvelles données dans l'attribut messageList$
   }
 
+
+  public createChannel(name: string) {
+    this.http.post(this.url, name).subscribe((e) => this.extractChannelAndGetChannel(e));
+  }
+
+  private extractChannelAndGetChannel(response: Response): ChannelModel {
+    this.getChanel();
+    return response.json() || [];
+  }
 }
