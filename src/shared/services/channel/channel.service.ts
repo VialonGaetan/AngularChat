@@ -51,7 +51,13 @@ export class ChannelService {
 
 
   public createChannel(name: string) {
-    this.http.post(this.url, {"name":name}).subscribe((e) => this.extractChannelAndGetChannel(e));
+    this.http.post(this.url, {"name": name}).subscribe((e) => this.extractChannelAndGetChannel(e));
+  }
+
+
+  public deleteChannel(threadId: number) {
+    this.http.delete(this.url, threadId);
+    this.getChanel();
   }
 
   private extractChannelAndGetChannel(response: Response): ChannelModel {
