@@ -4,7 +4,7 @@ import {Observable} from "rxjs/Observable";
 
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {ChanelModel} from "../../models/ChannelModel";
+import {ChannelModel} from "../../models/ChannelModel";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 import {URLSERVER} from "shared/constants/urls";
 
@@ -18,12 +18,12 @@ export class ChannelService {
    */
   private url: string;
 
-  public chanelList$: ReplaySubject<ChanelModel[]>;
+  public chanelList$: ReplaySubject<ChannelModel[]>;
 
   constructor(private http: Http) {
     this.url = URLSERVER;
     this.chanelList$ = new ReplaySubject(1);
-    this.chanelList$.next([new ChanelModel(0)]);
+    this.chanelList$.next([new ChannelModel(0)]);
   }
 
   /**

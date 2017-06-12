@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 
-import { ChanelModel } from "../../../shared/models/ChannelModel";
+import { ChannelModel } from "../../../shared/models/ChannelModel";
 
 @Component({
   selector: "app-channel",
@@ -9,10 +9,10 @@ import { ChanelModel } from "../../../shared/models/ChannelModel";
 })
 export class ChannelComponent implements OnInit {
 
-  @Input() channel: ChanelModel;
+  @Input() channel: ChannelModel;
 
   constructor() {
-    this.channel = new ChanelModel(0);
+    this.channel = new ChannelModel(0);
   }
   /**
    * Fonction ngOnInit.
