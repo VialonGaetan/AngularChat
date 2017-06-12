@@ -18,12 +18,12 @@ export class ChannelService {
    */
   private url: string;
 
-  public chanelList$: ReplaySubject<ChannelModel[]>;
+  public channelList$: ReplaySubject<ChannelModel[]>;
 
   constructor(private http: Http) {
     this.url = URLSERVER;
-    this.chanelList$ = new ReplaySubject(1);
-    this.chanelList$.next([new ChannelModel(0)]);
+    this.channelList$ = new ReplaySubject(1);
+    this.channelList$.next([new ChannelModel(0)]);
   }
 
   /**
@@ -46,12 +46,12 @@ export class ChannelService {
     // fait CTRL + Click pour voir la déclaration et la documentation
     const chanelList = response.json() || []; // ExtractMessage: Si response.json() est undefined ou null,
     // messageList prendra la valeur tableau vide: [];
-    this.chanelList$.next(chanelList); // On pousse les nouvelles données dans l'attribut messageList$
+    this.channelList$.next(chanelList); // On pousse les nouvelles données dans l'attribut messageList$
   }
 
 
   public createChannel(name: string) {
-    this.http.post(this.url, name).subscribe((e) => this.extractChannelAndGetChannel(e));
+    this.http.post(this.url, {"name":name}).subscribe((e) => this.extractChannelAndGetChannel(e));
   }
 
   private extractChannelAndGetChannel(response: Response): ChannelModel {

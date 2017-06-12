@@ -2,7 +2,7 @@
 
 
 <div *ngFor="let currentMessage of messageList">
-  <!--CurrentMessage est le message courant dans la boucle -->
-  <!--On donne notre message courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
+  <!--CurrentMessage est le channel courant dans la boucle -->
+  <!--On donne notre channel courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
   <app-message [message]="currentMessage"></app-message>
 </div>

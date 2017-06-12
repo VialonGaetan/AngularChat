@@ -24,4 +24,8 @@ export class ChannelComponent implements OnInit {
    */
   ngOnInit() { }
 
+  definirChannel(){
+
+  }
+
 }

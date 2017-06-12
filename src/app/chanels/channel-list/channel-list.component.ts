@@ -28,7 +28,7 @@ export class ChannelListComponent implements OnInit {
    */
   ngOnInit() {
     this.chanelService.getChanel();
-    this.chanelService.chanelList$.subscribe((chanel) => this.chanelList = chanel);
+    this.chanelService.channelList$.subscribe((chanel) => this.chanelList = chanel);
   }
 
 }

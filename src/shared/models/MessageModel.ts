@@ -5,27 +5,27 @@
 export class MessageModel {
 
   /**
-   * Identifiant du message.
+   * Identifiant du channel.
    */
   public id: number;
 
   /**
-   * Contenu du message
+   * Contenu du channel
    */
   public content: string;
 
   /**
-   * Nom de la personne ayant envoyé le message
+   * Nom de la personne ayant envoyé le channel
    */
   public from: string;
 
   /**
-   * Date de création du message.
+   * Date de création du channel.
    */
   public createdAt: string;
 
   /**
-   * Date de la mise à jour du message. Si le message n'a pas été mis à jour, par défaut la valeur sera la identique
+   * Date de la mise à jour du channel. Si le channel n'a pas été mis à jour, par défaut la valeur sera la identique
    * à createdAt.
    */
   public updatedAt: string;
