@@ -12,7 +12,7 @@ export class ChannelComponent implements OnInit {
   @Input() channel: ChanelModel;
 
   constructor() {
-    this.channel = new ChanelModel(0, "Hello!");
+    this.channel = new ChanelModel(0);
   }
   /**
    * Fonction ngOnInit.

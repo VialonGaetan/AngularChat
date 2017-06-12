@@ -3,18 +3,18 @@ import { Component, OnInit } from "@angular/core";
 import { MessageService } from "../../../shared/services";
 import { MessageModel } from "../../../shared/models/MessageModel";
 import {ChanelModel} from "../../../shared/models/ChannelModel";
-import {ChanelService} from "../../../shared/services/chanel/chanel.service";
+import {ChannelService} from "../../../shared/services/channel/channel.service";
 
 @Component({
-  selector: "app-message-list",
+  selector: "app-channel-list",
   templateUrl: "channel-list.component.html",
   styleUrls: ["channel-list.component.css"]
 })
-export class ChanelListComponent implements OnInit {
+export class ChannelListComponent implements OnInit {
 
   public chanelList: ChanelModel[];
 
-  constructor(private chanelService: ChanelService) {
+  constructor(private chanelService: ChannelService) {
   }
 
   /**

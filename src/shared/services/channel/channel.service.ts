@@ -9,7 +9,7 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 import {URLSERVER} from "shared/constants/urls";
 
 @Injectable()
-export class ChanelService {
+export class ChannelService {
 
   /**
    * Url pour accéder aux données. L'url est commun à toutes les fonctions du service.
