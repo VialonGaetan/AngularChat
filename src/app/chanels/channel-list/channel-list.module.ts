@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 
-import { ChanelListComponent } from "./chanel-list.component";
-import { ChanelModule } from "../chanel";
+import { ChanelListComponent } from "./channel-list.component";
+import { ChannelModule } from "../channel";
 import { MessageService } from "../../../shared/services";
 
 @NgModule({
@@ -11,9 +11,9 @@ import { MessageService } from "../../../shared/services";
   ],
   imports: [
     CommonModule,
-    ChanelModule
+    ChannelModule
   ],
   exports: [ChanelListComponent],
   providers: [MessageService]
 })
-export class MessageListModule { }
+export class ChannelListModule { }

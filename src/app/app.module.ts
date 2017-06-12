@@ -8,7 +8,6 @@ import { AppComponent } from "./app.component";
 import { MessageComponent, MessageListComponent } from "./messages";
 import { MessageFormComponent } from "./message-form";
 import { MessageService } from "../shared/services/message/message.service";
-
 @NgModule({
   declarations: [
     AppComponent,

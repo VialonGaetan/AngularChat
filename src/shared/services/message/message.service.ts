@@ -61,8 +61,9 @@ export class MessageService {
    * @param message
    */
   public sendMessage(route: string, message: MessageModel) {
-    // Je suis vide :(
-    // Tu peux trouver des infos sur moi dans le README !
+
+    const finalUrl = this.url + route;
+    this.http.post(finalUrl,message).subscribe((e)=> this.extractMessageAndGetMessages(e,route));
   }
 
   /**
@@ -74,10 +75,7 @@ export class MessageService {
    * @param response
    */
   extractAndUpdateMessageList(response: Response) {
-    // Plus d'info sur Response ou sur la fonction .json()? si tu utilises Webstorm,
-    // fait CTRL + Click pour voir la déclaration et la documentation
     const messageList = response.json() || []; // ExtractMessage: Si response.json() est undefined ou null,
-    // messageList prendra la valeur tableau vide: [];
     this.messageList$.next(messageList); // On pousse les nouvelles données dans l'attribut messageList$
   }
 
@@ -92,7 +90,7 @@ export class MessageService {
    * @returns {any|{}}
    */
   private extractMessageAndGetMessages(response: Response, route: string): MessageModel {
-    // Je suis vide aussi ...
-    return new MessageModel(); // A remplacer ! On retourne ici un messageModel vide seulement pour que Typescript ne lève pas d'erreur !
+    this.getMessages(route);
+    return response.json()|| [];
   }
 }

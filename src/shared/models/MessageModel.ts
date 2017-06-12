@@ -1,6 +1,6 @@
 /**
  * Classe représentant object Message
- * Cet objet est renvoyé grâce à l'url /threads/:id/messages avec :id un nombre entier représentant l'id d'un Channel
+ * Cet objet est renvoyé grâce à l'url /threads/:id/messages avec :id un nombre entier représentant l'id d'un channel
  */
 export class MessageModel {
 
