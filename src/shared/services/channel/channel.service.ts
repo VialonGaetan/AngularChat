@@ -21,17 +21,18 @@ export class ChannelService {
   private url: string;
   private urlThread : string;
   private page: number;
-  public pageTotal : number;
+  public pages : ReplaySubject<number[]>;
 
   public channelList$: ReplaySubject<ChannelModel[]>;
 
   constructor(private http: Http) {
     this.page = 0;
     this.url = URLSERVER;
-    this.pageTotal = 5;
     this.urlThread = THREADSERVER;
+    this.pages = new ReplaySubject();
     this.channelList$ = new ReplaySubject(1);
     this.channelList$.next([new ChannelModel(0)]);
+    this.startSearch();
   }
 
   /**
@@ -73,7 +74,7 @@ export class ChannelService {
   }
 
   public changePageChannel(page: number){
-    this.page=page;
+    this.page = page;
     this.getChanel();
   }
 
@@ -85,18 +86,24 @@ export class ChannelService {
     this.searchLastPage(0);
   }
 
+  public range1(max: number) {
+    let x = [];
+    let i = 1;
+    while (x.push(i++) < max) {};
+    return x;
+  }
 
   public searchLastPage(i: number) {
+
+
     this.http.get(this.urlThread + i).subscribe((response) => {
-      if (response.json().isEmpty){
-        this.pageTotal = i-1;
-        console.log(i-1);
+      if (response.json().length < 20){
 
-
+        this.pages.next(this.range1(i - 1));
         this.getChanel();
-      }
-      else {
-        this.searchLastPage(i+1);
+
+      } else {
+        this.searchLastPage(i + 1);
       }
     });
   }
