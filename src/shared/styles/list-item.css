@@ -1,0 +1,7 @@
+.text-overflow-ellipsized-10px {
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+}

@@ -1,0 +1,13 @@
+.thread {
+  padding-left: 20px !important;
+}
+
+.thread:hover {
+  background: #005cb2;
+  color: white;
+}
+
+.thread.active {
+  background: #6ab7ff;
+  color: white;
+}
