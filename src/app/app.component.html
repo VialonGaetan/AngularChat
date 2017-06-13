@@ -3,18 +3,16 @@
 
     <div class="col-sm-3 col-md-3 sidebar" >
       <h1>{{title}}</h1>
-      <div class="pre-scrollable fill-80">
+      <div class="pre-scrollable fill-vh-70">
         <app-channel-list></app-channel-list>
       </div>
       <app-page-selector></app-page-selector>
       <app-channel-form></app-channel-form>
     </div>
-    <div class="col-md-6 card fill-90">
-      <div class="fill-75 pre-scrollable">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="col-md-6 card fill-vh-95 margin-fill-vh-95">
+      <router-outlet></router-outlet>
     </div>
-    <div class="col-md-3 card">
+    <div class="col-md-3 card pre-scrollable fill-vh-100">
       <h1>Users</h1>
       <app-user-list></app-user-list>
     </div>

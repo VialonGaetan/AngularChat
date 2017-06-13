@@ -1,2 +1,6 @@
-<app-message-list class="fill-90 pre-scrollable" [route]="routeObservable"></app-message-list>
-<app-message-form [id]="id" [route]="route"></app-message-form>
+<div class="pre-scrollable" style="max-height: 75vh;">
+  <app-message-list [route]="routeObservable"></app-message-list>
+</div>
+<div>
+  <app-message-form [id]="id" [route]="route"></app-message-form>
+</div>

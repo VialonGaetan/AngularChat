@@ -1,0 +1,58 @@
+.fill-vh-100 {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.fill-vh-95 {
+  height: 95vh;
+  min-height: 95vh;
+  max-height: 95vh;
+}
+
+.margin-fill-vh-95 {
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+}
+
+.fill-vh-80 {
+  height: 80vh;
+  min-height: 80vh;
+  max-height: 80vh;
+}
+
+.fill-vh-75 {
+  height: 75vh;
+  min-height: 75vh;
+  max-height: 75vh;
+}
+
+.fill-vh-70 {
+  height: 70vh;
+  min-height: 70vh;
+  max-height: 70vh;
+}
+
+.fill-vh-65 {
+  height: 65vh;
+  min-height: 65vh;
+  max-height: 65vh;
+}
+
+.fill-vh-10 {
+  height: 10vh;
+  min-height: 10vh;
+  max-height: 10vh;
+}
+
+.fill-vh-5 {
+  height: 5vh;
+  min-height: 5vh;
+  max-height: 5vh;
+}
+
+.take75 {
+  max-height: 75vh !important;
+  min-height: 75vh !important;
+  height: 75vh !important;
+}
