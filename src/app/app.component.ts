@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Observable";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: [ "../shared/styles/fill.css" ]
+  styleUrls: [ "app.component.css", "../shared/styles/fill.css" ]
 })
 export class AppComponent {
 

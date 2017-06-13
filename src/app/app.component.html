@@ -1,18 +1,18 @@
 <div class="container-fluid fill">
   <div class="row">
 
-    <div class="col-sm-3 col-md-3 sidebar" >
+    <div class="col-md-2 sidebar" >
       <h1>{{title}}</h1>
-      <div class="pre-scrollable fill-vh-70">
+      <div class="pre-scrollable fill-vh-75">
         <app-channel-list></app-channel-list>
       </div>
       <app-page-selector></app-page-selector>
       <app-channel-form></app-channel-form>
     </div>
-    <div class="col-md-6 card fill-vh-95 margin-fill-vh-95">
+    <div class="col-md-8 card fill-vh-95 margin-fill-vh-95">
       <router-outlet></router-outlet>
     </div>
-    <div class="col-md-3 card pre-scrollable fill-vh-100">
+    <div class="col-md-2 card pre-scrollable fill-vh-100">
       <h1>Users</h1>
       <app-user-list></app-user-list>
     </div>
