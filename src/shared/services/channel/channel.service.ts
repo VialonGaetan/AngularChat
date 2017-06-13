@@ -17,6 +17,7 @@ export class ChannelService {
    * La documentation des methodes du service permet d'avoir plus d'information concernant la façon d'accèder aux messages.
    */
   private url: string;
+  private page: number;
 
   public channelList$: ReplaySubject<ChannelModel[]>;
 
@@ -37,7 +38,7 @@ export class ChannelService {
    * @returns {Observable<R>}
    */
   public getChanel() {
-    this.http.get(this.url)
+    this.http.get(this.url + "?page=" + this.page)
       .subscribe((response) => this.extractAndUpdateChanelList(response));
   }
 
@@ -62,5 +63,10 @@ export class ChannelService {
   private extractChannelAndGetChannel(response: Response): ChannelModel {
     this.getChanel();
     return response.json() || [];
+  }
+
+  public changePageChannel(page: number){
+    this.page=page;
+    this.getChanel();
   }
 }
