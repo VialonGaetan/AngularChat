@@ -21,13 +21,14 @@ export class ChannelService {
   private url: string;
   private urlThread : string;
   private page: number;
-  private pageTotal : number;
+  public pageTotal : number;
 
   public channelList$: ReplaySubject<ChannelModel[]>;
 
   constructor(private http: Http) {
     this.page = 0;
     this.url = URLSERVER;
+    this.pageTotal = 5;
     this.urlThread = THREADSERVER;
     this.channelList$ = new ReplaySubject(1);
     this.channelList$.next([new ChannelModel(0)]);
@@ -80,16 +81,19 @@ export class ChannelService {
     return this.page;
   }
 
-  public getNumberTotalPage(): number {
+  public startSearch() {
     this.searchLastPage(0);
-    return this.pageTotal;
   }
 
 
-  private searchLastPage(i: number) {
+  public searchLastPage(i: number) {
     this.http.get(this.urlThread + i).subscribe((response) => {
       if (response.json().isEmpty){
         this.pageTotal = i-1;
+        console.log(i-1);
+
+
+        this.getChanel();
       }
       else {
         this.searchLastPage(i+1);

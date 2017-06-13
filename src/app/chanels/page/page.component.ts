@@ -10,15 +10,16 @@ import { ChannelService } from "../../../shared/services";
 export class PageComponent implements OnInit {
 
   private pageMax: number;
-  // Nombre de page maximum
   constructor(private channelService: ChannelService) {
   }
 
-  ngOnInit() {
-    // TODO : set le nombre de page maximum
-    this.pageMax = 5;
-  }
 
+  ngOnInit() {
+    this.pageMax =  this.channelService.pageTotal;
+  }
+  setPage(chosen: number){
+    this.channelService.changePageChannel(chosen);
+  }
   range1(max: number) {
     let x = [];
     let i = 1;
