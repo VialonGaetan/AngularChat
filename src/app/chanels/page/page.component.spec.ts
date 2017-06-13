@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MessageListComponent } from "./message-list.component";
+import { PageComponent } from "./page.component";
 
 describe("PageComponent", () => {
-  let component: MessageListComponent;
-  let fixture: ComponentFixture<MessageListComponent>;
+  let component: PageComponent;
+  let fixture: ComponentFixture<PageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageListComponent ]
+      declarations: [ PageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageListComponent);
+    fixture = TestBed.createComponent(PageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
