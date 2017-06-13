@@ -14,7 +14,7 @@ export class MessageListComponent implements OnInit {
   private route: string;
 
   constructor(private messageService: MessageService) {
-    this.route = "2/messages";
+    this.route = "350/messages";
   }
 
   /**
@@ -28,7 +28,7 @@ export class MessageListComponent implements OnInit {
    */
   ngOnInit() {
     this.messageService.getMessages(this.route);
-    this.messageService.messageList$.subscribe((messages) => this.messageList = messages);
+    this.messageService.messageList$.subscribe((messages) => this.messageList = messages.reverse());
   }
 
 }
