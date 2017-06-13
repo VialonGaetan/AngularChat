@@ -6,7 +6,11 @@ import {ChannelService} from "../../../shared/services/channel/channel.service";
 @Component({
   selector: "app-channel",
   templateUrl: "channel.component.html",
-  styleUrls: ["channel.component.css", "../../../shared/styles/fill.css", "../../../shared/styles/list-item.css"]
+  styleUrls: [
+    "channel.component.css",
+    "../../../shared/styles/fill.css",
+    "../../../shared/styles/list-item.css"
+  ]
 })
 export class ChannelComponent implements OnInit {
 
