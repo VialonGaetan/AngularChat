@@ -12,7 +12,9 @@ import { ChannelService } from "../../../shared/services";
 export class PageComponent implements OnInit {
 
   private pageMax: number[];
+  private page: number;
   constructor(private channelService: ChannelService) {
+    this.page=0;
     this.pageMax = [];
   }
 
@@ -23,6 +25,7 @@ export class PageComponent implements OnInit {
     this.channelService.pages.subscribe((max) => this.pageMax = max);
   }
   setPage(chosen: number) {
+    this.page = chosen;
     this.channelService.changePageChannel(chosen);
   }
 }

@@ -13,7 +13,6 @@ import {ChannelService} from "../../../shared/services/channel/channel.service";
 export class ChannelListComponent implements OnInit {
 
   public chanelList: ChannelModel[];
-
   constructor(private chanelService: ChannelService) {
     this.chanelService.startSearch();
   }
@@ -28,7 +27,7 @@ export class ChannelListComponent implements OnInit {
    * l'initialisation simple des variables. Pour plus d'information sur le ngOnInit, il y a un lien dans le README.
    */
   ngOnInit() {
-
+    this.chanelService.getChanel();
     this.chanelService.channelList$.subscribe((chanel) => this.chanelList = chanel);
   }
 
