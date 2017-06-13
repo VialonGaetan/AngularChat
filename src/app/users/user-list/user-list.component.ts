@@ -13,7 +13,6 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService: UserService) {
   }
-
   /**
    * Fonction ngOnInit.
    * Cette fonction est appelée après l'execution de tous les constructeurs de toutes les classes typescript.
