@@ -13,16 +13,17 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 export class MessageListComponent implements OnInit {
 
   public messageList: MessageModel[];
+  private rte: string;
   @Input() route: ReplaySubject<string>;
+
   private reload_loop() {
     setInterval(() => {
-      this.messageService.getMessages(this.route);
+      this.messageService.getMessages(this.rte);
     }, 1000);
   }
   constructor(
     private messageService: MessageService,
   ) {
-    this.reload_loop();
   }
 
   /**
@@ -35,7 +36,8 @@ export class MessageListComponent implements OnInit {
    * l'initialisation simple des variables. Pour plus d'information sur le ngOnInit, il y a un lien dans le README.
    */
   ngOnInit() {
-    this.route.subscribe((route) => this.messageService.getMessages(route));
+    this.route.subscribe((route) => {this.rte = route; this.messageService.getMessages(route)});
+    this.reload_loop();
     this.messageService.messageList$.subscribe((messages) => this.messageList = messages);
   }
 
