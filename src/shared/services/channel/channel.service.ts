@@ -27,13 +27,8 @@ export class ChannelService {
   }
 
   /**
-   * Fonction getMessage.
-   * Cette fonction permet de récupérer la liste des messages pour un channel donné. Elle prend en parametre:
-   * - route: La route. C'est la fin de l'url. Elle sera concaténée à l'attribut this.url pour former l'url complète.
-   *          Pour l'envoie des messages la route doit avoir la structure suivante: :id/messages avec ":id" étant
-   *          un nombre entier correspondant à l'identifiant (id) du channel.
-   * Exemple de route: 1/messages
-   * @param route
+   * Fonction getChannel.
+   * Cette fonction permet de récupérer la liste des channels disponibles.
    * @returns {Observable<R>}
    */
   public getChanel() {
@@ -45,7 +40,7 @@ export class ChannelService {
     // Plus d'info sur Response ou sur la fonction .json()? si tu utilises Webstorm,
     // fait CTRL + Click pour voir la déclaration et la documentation
     const chanelList = response.json() || []; // ExtractMessage: Si response.json() est undefined ou null,
-    // messageList prendra la valeur tableau vide: [];
+    // chanelList prendra la valeur tableau vide: [];
     this.channelList$.next(chanelList); // On pousse les nouvelles données dans l'attribut messageList$
   }
 
