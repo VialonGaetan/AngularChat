@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 
 import { MessageService } from "../../../shared/services";
 import { MessageModel } from "../../../shared/models/MessageModel";
+
+import {ReplaySubject} from "rxjs/ReplaySubject";
 
 @Component({
   selector: "app-message-list",
@@ -11,15 +13,15 @@ import { MessageModel } from "../../../shared/models/MessageModel";
 export class MessageListComponent implements OnInit {
 
   public messageList: MessageModel[];
-  private route: string;
+  @Input() route: ReplaySubject<string>;
   private reload_loop() {
     setInterval(() => {
       this.messageService.getMessages(this.route);
     }, 1000);
   }
-
-  constructor(private messageService: MessageService) {
-    this.route = "350/messages";
+  constructor(
+    private messageService: MessageService,
+  ) {
     this.reload_loop();
   }
 
@@ -33,8 +35,8 @@ export class MessageListComponent implements OnInit {
    * l'initialisation simple des variables. Pour plus d'information sur le ngOnInit, il y a un lien dans le README.
    */
   ngOnInit() {
-    this.messageService.getMessages(this.route);
-    this.messageService.messageList$.subscribe((messages) => this.messageList = messages.reverse());
+    this.route.subscribe((route) => this.messageService.getMessages(route));
+    this.messageService.messageList$.subscribe((messages) => this.messageList = messages);
   }
 
 }

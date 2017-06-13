@@ -1,3 +1,36 @@
-h1 {
-  text-align: center;
+.fill-100 {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.fill-90 {
+  height: 90vh;
+  min-height: 90vh;
+  max-height: 90vh;
+}
+
+.fill-80 {
+  height: 80vh;
+  min-height: 80vh;
+  max-height: 80vh;
+}
+
+.fill-75 {
+  height: 75vh;
+  min-height: 75vh;
+  max-height: 75vh;
+}
+
+
+.fill-10 {
+  height: 10vh;
+  min-height: 10vh;
+  max-height: 10vh;
+}
+
+.fill-5 {
+  height: 5vh;
+  min-height: 5vh;
+  max-height: 5vh;
 }

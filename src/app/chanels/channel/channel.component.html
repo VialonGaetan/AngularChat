@@ -1,4 +1,1 @@
-<p>
- <strong> {{channel.name}}:{{channel.id}} </strong>
-  <button (click)="removeChannel(channel.id)">X</button>
-</p>
+<a [routerLink]="['/threads', channel.id]" routerLinkActive="active">{{channel.name}}</a>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 
 import { MessageService } from "../../shared/services";
 import { MessageModel } from "../../shared/models/MessageModel";
@@ -11,11 +11,11 @@ import { MessageModel } from "../../shared/models/MessageModel";
 export class MessageFormComponent implements OnInit {
 
   public message: MessageModel;
-  private route: string;
+  @Input() route: string;
+  @Input() id: number;
 
   constructor(private messageService: MessageService) {
-    this.message = new MessageModel(1, "Hello", "moi");
-    this.route = "350/messages";
+    this.message = new MessageModel(this.id, "Hello", "moi");
   }
 
   ngOnInit() { }
