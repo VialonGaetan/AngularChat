@@ -1,10 +1,7 @@
 <!-- On boucle sur tous les messages de notre liste de messages stockés dans messageList -->
 
-
-<div *ngFor="let currentPage of range1(pageMax)" >
-  <!--CurrentMessage est le channel courant dans la boucle -->
-  <!--On donne notre channel courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
-  <button (click)="setPage(currentPage)">
-      {{currentPage}}
-  </button>
-</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li  *ngFor="let currentPage of range1(pageMax)" (click)="setPage(currentPage)" class="page-item"> <a class="page-link" href="#">{{currentPage}}</a></li>
+  </ul>
+</nav>

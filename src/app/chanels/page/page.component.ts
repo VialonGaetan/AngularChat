@@ -16,12 +16,13 @@ export class PageComponent implements OnInit {
 
   ngOnInit() {
     // TODO : set le nombre de page maximum
-    //this.pageMax;
+    this.pageMax = 5;
   }
 
-  range1(i: number){
-    var x = [];
-    var i =1;
-    while(x.push(i++)<i){};
-    return x}
+  range1(max: number) {
+    let x = [];
+    let i = 1;
+    while (x.push(i++) < max) {};
+    return x;
+  }
 }
