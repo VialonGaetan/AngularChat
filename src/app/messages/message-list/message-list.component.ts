@@ -12,9 +12,15 @@ export class MessageListComponent implements OnInit {
 
   public messageList: MessageModel[];
   private route: string;
+  private reload_loop() {
+    setInterval(() => {
+      this.messageService.getMessages(this.route);
+    }, 1000);
+  }
 
   constructor(private messageService: MessageService) {
     this.route = "350/messages";
+    this.reload_loop();
   }
 
   /**

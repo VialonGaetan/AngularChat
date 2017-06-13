@@ -63,7 +63,7 @@ export class MessageService {
   public sendMessage(route: string, message: MessageModel) {
 
     const finalUrl = this.url + route;
-    this.http.post(finalUrl,message).subscribe((e)=> this.extractMessageAndGetMessages(e,route));
+    this.http.post(finalUrl, message).subscribe((e) => this.extractMessageAndGetMessages(e, route));
   }
 
   /**
@@ -91,6 +91,6 @@ export class MessageService {
    */
   private extractMessageAndGetMessages(response: Response, route: string): MessageModel {
     this.getMessages(route);
-    return response.json()|| [];
+    return response.json() || [];
   }
 }
