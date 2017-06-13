@@ -6,7 +6,9 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {ChannelModel} from "../../models/ChannelModel";
 import {ReplaySubject} from "rxjs/ReplaySubject";
-import {URLSERVER} from "shared/constants/urls";
+import {THREADSERVER, URLSERVER} from "shared/constants/urls";
+import {_if} from "rxjs/observable/if";
+import {error} from "util";
 
 @Injectable()
 export class ChannelService {
@@ -17,12 +19,16 @@ export class ChannelService {
    * La documentation des methodes du service permet d'avoir plus d'information concernant la façon d'accèder aux messages.
    */
   private url: string;
+  private urlThread : string;
   private page: number;
+  private pageTotal : number;
 
   public channelList$: ReplaySubject<ChannelModel[]>;
 
   constructor(private http: Http) {
+    this.page = 0;
     this.url = URLSERVER;
+    this.urlThread = THREADSERVER;
     this.channelList$ = new ReplaySubject(1);
     this.channelList$.next([new ChannelModel(0)]);
   }
@@ -38,7 +44,7 @@ export class ChannelService {
    * @returns {Observable<R>}
    */
   public getChanel() {
-    this.http.get(this.url + "?page=" + this.page)
+    this.http.get(this.urlThread + this.page)
       .subscribe((response) => this.extractAndUpdateChanelList(response));
   }
 
@@ -69,4 +75,28 @@ export class ChannelService {
     this.page=page;
     this.getChanel();
   }
+
+  public getCurrentPAge() : number {
+    return this.page;
+  }
+
+  public getNumberTotalPage(): number {
+    this.searchLastPage(0);
+    return this.pageTotal;
+  }
+
+
+  private searchLastPage(i: number) {
+    this.http.get(this.urlThread + i).subscribe((response) => {
+      if (response.json().isEmpty){
+        this.pageTotal = i-1;
+      }
+      else {
+        this.searchLastPage(i+1);
+      }
+    });
+  }
+
+
+
 }
