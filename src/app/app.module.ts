@@ -23,7 +23,7 @@ import {UserComponent} from "./users/user/user.component";
     ChannelComponent,
     ChannelListComponent,
     ChannelFormComponent,
-    PageComponent
+    PageComponent,
     ChannelFormComponent,
     UserListComponent,
     UserComponent
