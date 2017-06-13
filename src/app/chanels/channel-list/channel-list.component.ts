@@ -13,7 +13,6 @@ import {ChannelService} from "../../../shared/services/channel/channel.service";
 export class ChannelListComponent implements OnInit {
 
   public chanelList: ChannelModel[];
-
   constructor(private chanelService: ChannelService) {
     this.chanelService.startSearch();
   }
