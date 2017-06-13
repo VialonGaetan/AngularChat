@@ -32,7 +32,6 @@ export class ChannelService {
     this.pages = new ReplaySubject();
     this.channelList$ = new ReplaySubject(1);
     this.channelList$.next([new ChannelModel(0)]);
-    this.startSearch();
   }
 
   /**
