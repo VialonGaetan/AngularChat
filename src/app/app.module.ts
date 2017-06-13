@@ -13,6 +13,8 @@ import { MessageService } from "../shared/services/message/message.service";
 import { ChannelService } from "../shared/services/channel/channel.service";
 import {ChannelListComponent} from "./chanels/channel-list/channel-list.component";
 import {ChannelFormComponent} from "./channel-form/channel-form.component";
+import {ChatComponent} from "./chat/chat.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import {ChannelFormComponent} from "./channel-form/channel-form.component";
     MessageComponent,
     ChannelComponent,
     ChannelListComponent,
-    ChannelFormComponent
+    ChannelFormComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import {ChannelFormComponent} from "./channel-form/channel-form.component";
     RouterModule.forRoot([
       {
         path: 'threads/:id',
-        component: MessageListComponent
+        component: ChatComponent
       }
     ])
   ],

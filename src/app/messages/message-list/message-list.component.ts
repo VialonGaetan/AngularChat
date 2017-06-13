@@ -1,10 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {Component, Input, OnInit} from "@angular/core";
 
 import { MessageService } from "../../../shared/services";
 import { MessageModel } from "../../../shared/models/MessageModel";
 
-import 'rxjs/add/operator/switchMap';
+import {ReplaySubject} from "rxjs/ReplaySubject";
 
 @Component({
   selector: "app-message-list",
@@ -14,12 +13,12 @@ import 'rxjs/add/operator/switchMap';
 export class MessageListComponent implements OnInit {
 
   public messageList: MessageModel[];
-  private route: string;
+  @Input() route: ReplaySubject<string>;
 
   constructor(
     private messageService: MessageService,
-    private activatedRoute: ActivatedRoute
   ) {
+
   }
 
   /**
@@ -32,16 +31,7 @@ export class MessageListComponent implements OnInit {
    * l'initialisation simple des variables. Pour plus d'information sur le ngOnInit, il y a un lien dans le README.
    */
   ngOnInit() {
-
-    this.activatedRoute.params
-      .map(params => params['id'])
-      .subscribe(id => {
-        this.route = id+"/messages";
-        console.log(this.route);
-
-        this.messageService.getMessages(this.route);
-      });
-
+    this.route.subscribe((route) => this.messageService.getMessages(route));
     this.messageService.messageList$.subscribe((messages) => this.messageList = messages);
   }
 
