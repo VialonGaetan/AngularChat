@@ -1,6 +1,6 @@
 <!-- On boucle sur tous les channels de notre liste de channels stockés dans chanelList -->
 <ul>
-  <li *ngFor="let currentChannel of chanelList">
+  <li *ngFor="let currentChannel of chanelList" [routerLink]="['/threads', currentChannel.id]">
     <!--CurrentMessage estchanelsage courant dans la boucle -->
     <!--On donne nochanelsage courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
     <app-channel [channel]="currentChannel"></app-channel>
