@@ -221,7 +221,7 @@ La seconde et troisième ligne contiennent deux balises particulières: `<app-me
 d'insérer les composants `MessageListComponent` et `MessageFormComponent` dans l'html. Le nom des balises est défini dans leurs fichiers typescript 
 dans le `selector`. 
 
-`message-list.component.ts`
+`page.component.ts`
 ```
 @Component({
   selector: 'app-message-list', <-- nom de la balise

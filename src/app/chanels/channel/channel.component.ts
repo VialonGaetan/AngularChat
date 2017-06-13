@@ -13,7 +13,7 @@ export class ChannelComponent implements OnInit {
   @Input() channel: ChannelModel;
 
   constructor(private chanelService: ChannelService) {
-    this.channel = new ChannelModel(0);
+    this.channel = new ChannelModel(chanelService.getCurrentPAge());
   }
   /**
    * Fonction ngOnInit.
