@@ -1,12 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Http, RequestOptions, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-
+import {Injectable} from "@angular/core";
+import {Http, Response} from "@angular/http";
+import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import { MessageModel } from "../../models/MessageModel";
-import { ReplaySubject } from "rxjs/ReplaySubject";
-import { URLSERVER } from "shared/constants/urls";
+import {MessageModel} from "../../models/MessageModel";
+import {ReplaySubject} from "rxjs/ReplaySubject";
+import {URLSERVER} from "shared/constants/urls";
 
 @Injectable()
 export class MessageService {
@@ -30,7 +29,6 @@ export class MessageService {
   constructor(private http: Http) {
     this.url = URLSERVER;
     this.messageList$ = new ReplaySubject(1);
-    this.messageList$.next([new MessageModel()]);
   }
 
   /**
