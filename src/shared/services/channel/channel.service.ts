@@ -37,7 +37,7 @@ export class ChannelService {
    * @returns {Observable<R>}
    */
   public getChanel() {
-       this.http.get(this.url)
+    this.http.get(this.url)
       .subscribe((response) => this.extractAndUpdateChanelList(response));
   }
 
@@ -56,8 +56,7 @@ export class ChannelService {
 
 
   public deleteChannel(threadId: number) {
-    this.http.delete(this.url, threadId);
-    this.getChanel();
+    this.http.delete(this.url + "/" + threadId).subscribe((e) => this.getChanel());
   }
 
   private extractChannelAndGetChannel(response: Response): ChannelModel {

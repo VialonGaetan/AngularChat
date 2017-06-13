@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 import { ChannelModel } from "../../../shared/models/ChannelModel";
+import {ChannelService} from "../../../shared/services/channel/channel.service";
 
 @Component({
   selector: "app-channel",
@@ -11,7 +12,7 @@ export class ChannelComponent implements OnInit {
 
   @Input() channel: ChannelModel;
 
-  constructor() {
+  constructor(private chanelService: ChannelService) {
     this.channel = new ChannelModel(0);
   }
   /**
@@ -23,5 +24,8 @@ export class ChannelComponent implements OnInit {
    * le faire dans le ngOnInit.
    */
   ngOnInit() { }
+  removeChannel(id: number) {
+    this.chanelService.deleteChannel(id);
+  }
 
 }
