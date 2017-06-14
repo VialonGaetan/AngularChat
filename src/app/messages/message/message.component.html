@@ -1,4 +1,6 @@
 <p>
-  Message: <strong> {{message.content}} </strong> <br>
-  From: <strong>{{message.from}}</strong>
+  Message: <strong>{{message.from}}: {{message.content}} </strong>
+  <iframe *ngIf="hasYoutubeLink" id="ytplayer" type="text/html" width="640" height="360"
+          [src]="embedLink | safe"
+          frameborder="0">Veuillez désactiver AdBlock pour visualiser la vidéo Youtube</iframe>
 </p>
