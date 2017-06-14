@@ -25,10 +25,10 @@ export class WeatherService {
 
   public getWeather(city: string) {
     this.http.get(this.url + city + this.key)
-      .subscribe((response) => this.extractWeather(response));
+      .subscribe((response) => this.weather$.next(this.extractWeather(response)));
   }
 
-  private extractWeather(response: Response) {
-    this.weather$.next(new WeatherModel(response.json().name,response.json().weather[0].description,response.json().main.temp,response.json().main.humidity,response.json().main.pressure));
+  private extractWeather(response: Response) : WeatherModel {
+    return new WeatherModel(response.json().name,response.json().weather[0].description,response.json().main.temp,response.json().main.humidity,response.json().main.pressure);
   }
 }
