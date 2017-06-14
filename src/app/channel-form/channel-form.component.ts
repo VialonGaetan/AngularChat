@@ -1,8 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-
-import { MessageModel } from "../../shared/models/MessageModel";
+import {Component, OnInit} from "@angular/core";
 import {ChannelService} from "../../shared/services/channel/channel.service";
-import {ChannelModel} from "../../shared/models/ChannelModel";
 
 @Component({
   selector: "app-channel-form",
@@ -13,7 +10,6 @@ export class ChannelFormComponent implements OnInit {
 
   private nom: string;
   constructor(private channelService: ChannelService) {
-    console.log("creation de l'ajout ");
     this.nom = "Nouveau channel";
   }
 
@@ -26,8 +22,9 @@ export class ChannelFormComponent implements OnInit {
    * ainsi que le channel à envoyer. Ce dernier correspond à l'objet MessageModel que l'utilisateur rempli à travers l'input.
    */
   createChannel() {
-    console.log("Click!",this.nom);
+    console.log("Click!", this.nom);
     this.channelService.createChannel(this.nom);
+    // this.router.navigate('/')
    // this.channelService.createChannel(this.route, this.channel);
   }
 }

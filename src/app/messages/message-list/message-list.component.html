@@ -1,8 +1,8 @@
-<!-- On boucle sur tous les messages de notre liste de messages stockés dans messageList -->
 
-<button (click)="loadMoreHistory()" class="btn btn-primary btn-lg btn-block">More</button>
-<div *ngFor="let currentMessage of messageList">
+<div id="scroll" class="pre-scrollable" onchange="this.scrollTop = this.offsetHeight" (mouseover)="setPageHeight()" style="max-height: 80vh;" (scroll)="scrollEvent()" onload="">
+<div *ngFor="let currentMessage of messageList" >
   <!--CurrentMessage est le channel courant dans la boucle -->
   <!--On donne notre channel courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
   <app-message [message]="currentMessage"></app-message>
+</div>
 </div>

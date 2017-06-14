@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
-
-import { MessageModel } from "../../../shared/models/MessageModel";
+import {Component, Input, OnInit} from "@angular/core";
+import {MessageModel} from "../../../shared/models/MessageModel";
 
 @Component({
   selector: "app-message",
@@ -10,18 +9,30 @@ import { MessageModel } from "../../../shared/models/MessageModel";
 export class MessageComponent implements OnInit {
 
   @Input() message: MessageModel;
+  private hasYoutubeLink: boolean;
+  private embedLink: string;
 
   constructor() {
     this.message = new MessageModel(0, "Hello!");
   }
-  /**
-   * Fonction ngOnInit.
-   * Cette fonction est appelée après l'execution de tous les constructeurs de toutes les classes typescript.
-   * Cette dernière s'avère très utile lorsque l'on souhaite attendre des valeurs venant de d'autres composants.
-   * Notre composant qui prend en @Input un channel. Les @Input ne sont accessibles uniquement à partir du ngOnInit,
-   * pas dans le constructeur. Si vous souhaitez manipuler votre channel lors du chargement du composant, vous devez
-   * le faire dans le ngOnInit.
-   */
-  ngOnInit() { }
 
+  /**
+   * Recherche les liens youtubes
+   */
+  ngOnInit() {
+    this.hasYoutubeLink = this.message.content.indexOf("www.youtube.com/") !== -1;
+    if (this.hasYoutubeLink) {
+      console.log(this.message.content);
+      const start: number = this.message.content.indexOf("=") + 1;
+      let end: number = this.message.content.indexOf("\ ", start);
+      if (end < 0) {
+        end = this.message.content.length - 1;
+      }
+      this.embedLink = this.message.content.substr(start, end - start + 1);
+    }
+  }
+
+  youtubeEmbed(): string {
+    return this.embedLink;
+  }
 }
