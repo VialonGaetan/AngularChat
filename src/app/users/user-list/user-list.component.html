@@ -1,8 +1,9 @@
 <!-- On boucle sur tous les messages de notre liste de messages stockés dans messageList -->
 
-
-<div *ngFor="let currentuser of userList">
-  <!--currentuser est le user courant dans la boucle -->
-  <!--On donne notre user courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
-  <app-user [user]="currentuser"></app-user>
-</div>
+<ul>
+  <li *ngFor="let currentuser of userList">
+    <!--currentuser est le user courant dans la boucle -->
+    <!--On donne notre user courant en Input (en entrée, parametre) du composant Message qui va lui l'afficher.-->
+    <app-user [user]="currentuser"></app-user>
+  </li>
+</ul>

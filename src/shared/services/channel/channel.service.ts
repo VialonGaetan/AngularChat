@@ -19,10 +19,10 @@ export class ChannelService {
    * La documentation des methodes du service permet d'avoir plus d'information concernant la façon d'accèder aux messages.
    */
   private url: string;
-  private urlThread : string;
+  private urlThread: string;
   private page: number;
-  public pages : ReplaySubject<number[]>;
-
+  public pages: ReplaySubject<number[]>;
+  private pageMax: number;
   public channelList$: ReplaySubject<ChannelModel[]>;
 
   constructor(private http: Http) {
@@ -32,7 +32,6 @@ export class ChannelService {
     this.pages = new ReplaySubject();
     this.channelList$ = new ReplaySubject(1);
     this.channelList$.next([new ChannelModel(0)]);
-    this.startSearch();
   }
 
   /**
@@ -68,12 +67,13 @@ export class ChannelService {
     return response.json() || [];
   }
 
-  public changePageChannel(page: number){
+  public changePageChannel(page: number) {
     this.page = page;
+    this.computePage(page);
     this.getChanel();
   }
 
-  public getCurrentPAge() : number {
+  public getCurrentPAge(): number {
     return this.page;
   }
 
@@ -83,26 +83,33 @@ export class ChannelService {
 
   public range1(max: number) {
     let x = [];
-    let i = 1;
-    while (x.push(i++) < max) {};
+    let i = 0;
+    while (x.push(i++) < max) {
+    }
+    ;
     return x;
   }
 
   public searchLastPage(i: number) {
-
-
     this.http.get(this.urlThread + i).subscribe((response) => {
-      if (response.json().length < 20){
-
-        this.pages.next(this.range1(i - 1));
-        this.getChanel();
-
+      if (response.json().length < 20) {
+        this.pageMax = i - 1;
+        this.computePage(this.page);
       } else {
         this.searchLastPage(i + 1);
       }
     });
   }
 
+  private computePage(page: number) {
+    if (page <= 2) {
+      this.pages.next(this.range1(4).concat(this.pageMax));
+    } else if (page <= this.pageMax - 2) {
+      this.pages.next([0, page - 1, page, page + 1, this.pageMax]);
+    } else {
+      this.pages.next([0, this.pageMax - 3, this.pageMax - 2, this.pageMax - 1, this.pageMax]);
+    }
+  }
 
 
 }

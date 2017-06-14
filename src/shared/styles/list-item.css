@@ -1,0 +1,21 @@
+.text-overflow-ellipsized-10px {
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.list-item {
+  padding-left: 20px !important;
+}
+
+.list-item:hover {
+  background: #1e88e5;
+  color: white;
+}
+
+.list-item.active {
+  background: #005cb2;
+  color: white;
+}
