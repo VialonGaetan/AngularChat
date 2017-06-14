@@ -15,7 +15,7 @@ export class MessageListComponent implements OnInit {
   private historyEnd: boolean;
   private modified: boolean;
   public messageList: MessageModel[];
-  public mainList: MessageModel[];
+  public blocked: boolean;
   private rte: string;
   @Input() route: ReplaySubject<string>;
 
@@ -30,6 +30,7 @@ export class MessageListComponent implements OnInit {
   constructor(private messageService: MessageService) {
     this.historyLoaded = 0;
     this.historyEnd = false;
+    this.blocked = false;
   }
 
   loadMoreHistory() {
@@ -77,31 +78,32 @@ export class MessageListComponent implements OnInit {
   }
 
   private addHistory(messages: MessageModel[]) {
-    if (messages.length == 0) {
+    if (messages.length === 0) {
       this.historyEnd = true;
     }
     let first;
     first = this.messageList[0];
     let tab = [];
     for (let i = 0; i < messages.length; i++) {
-      if (first.id != messages[i].id) {
+      if (first.id !== messages[i].id) {
         tab = [messages[i]].concat(tab);
       }
 
       this.messageList = tab.concat(this.messageList);
-      document.getElementById("scroll").scrollTop = 50;
-    }
-  }
-  scrollEvent()
-  {
-    const scrollFromTop = document.getElementById("scroll").scrollTop;
-    if (scrollFromTop < 5 && !this.historyEnd) {
-      this.loadMoreHistory();
+      document.getElementById("scroll").scrollTop = 10;
     }
   }
 
-  setPageHeight()
-  {
+  scrollEvent() {
+    const scrollFromTop = document.getElementById("scroll").scrollTop;
+    if (scrollFromTop < 5 && !this.historyEnd && !this.blocked) {
+      this.blocked = true;
+      this.loadMoreHistory();
+      this.blocked = false;
+    }
+  }
+
+  setPageHeight() {
     this.pageHeight = document.getElementById("scroll").offsetHeight;
   }
 }
