@@ -10,6 +10,7 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 })
 export class MessageListComponent implements OnInit {
   public historyLoaded: number;
+  private pageHeight: number;
   private historyAsked: boolean;
   private historyEnd: boolean;
   private modified: boolean;
@@ -75,7 +76,7 @@ export class MessageListComponent implements OnInit {
   }
 
   private addHistory(messages: MessageModel[]) {
-    if(messages.length == 0){
+    if (messages.length == 0) {
       this.historyEnd = true;
     }
     let first;
@@ -88,7 +89,18 @@ export class MessageListComponent implements OnInit {
     }
 
     this.messageList = tab.concat(this.messageList);
+    document.getElementById("scroll").scrollTop = 50;
+  }
 
+  scrollEvent() {
+    const scrollFromTop = document.getElementById("scroll").scrollTop;
+    if (scrollFromTop < 5 && !this.historyEnd) {
+      this.loadMoreHistory();
+    }
+  }
+
+  setPageHeight() {
+    this.pageHeight = document.getElementById("scroll").offsetHeight;
   }
 }
 
