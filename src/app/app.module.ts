@@ -18,6 +18,7 @@ import {ChatComponent} from "./chat/chat.component";
 import {PageComponent} from "./chanels/page/page.component";
 import {UserListComponent} from "./users/user-list/user-list.component";
 import {UserComponent} from "./users/user/user.component";
+import {WeatherService} from "../shared/services/weather/weather.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,7 @@ import {UserComponent} from "./users/user/user.component";
       }
     ])
   ],
-  providers: [MessageService, ChannelService, UserService],
+  providers: [MessageService, ChannelService, UserService, WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
