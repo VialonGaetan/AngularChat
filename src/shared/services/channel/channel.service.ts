@@ -7,6 +7,7 @@ import "rxjs/add/operator/catch";
 import {ChannelModel} from "../../models/ChannelModel";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 import {THREADSERVER, URLSERVER} from "shared/constants/urls";
+import { Router } from "@angular/router";
 import {_if} from "rxjs/observable/if";
 import {error} from "util";
 
@@ -25,7 +26,7 @@ export class ChannelService {
   private pageMax: number;
   public channelList$: ReplaySubject<ChannelModel[]>;
 
-  constructor(private http: Http) {
+  constructor(private router: Router, private http: Http) {
     this.page = 0;
     this.url = URLSERVER;
     this.urlThread = THREADSERVER;
@@ -54,7 +55,8 @@ export class ChannelService {
 
 
   public createChannel(name: string) {
-    this.http.post(this.url, {"name": name}).subscribe((e) => this.extractChannelAndGetChannel(e));
+    this.http.post(this.url, {"name": name}).subscribe((e) => {
+      this.extractChannelAndGetChannel(e)});
   }
 
 
@@ -63,8 +65,15 @@ export class ChannelService {
   }
 
   private extractChannelAndGetChannel(response: Response): ChannelModel {
-    this.getChanel();
+    this.goToChannel(response);
     return response.json() || [];
+  }
+
+  private goToChannel(response: Response){
+    let link: number;
+    link = response.json().id;
+    const finalUrl = "/threads/" + link;
+    this.router.navigate([finalUrl]);
   }
 
   public changePageChannel(page: number) {
@@ -82,7 +91,7 @@ export class ChannelService {
   }
 
   public range1(max: number) {
-    let x = [];
+    const x = [];
     let i = 0;
     while (x.push(i++) < max) {
     }
