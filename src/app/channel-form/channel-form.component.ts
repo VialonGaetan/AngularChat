@@ -1,8 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-
-import { MessageModel } from "../../shared/models/MessageModel";
+import {Component, OnInit} from "@angular/core";
 import {ChannelService} from "../../shared/services/channel/channel.service";
-import {ChannelModel} from "../../shared/models/ChannelModel";
 
 @Component({
   selector: "app-channel-form",
@@ -13,7 +10,6 @@ export class ChannelFormComponent implements OnInit {
 
   private nom: string;
   constructor(private channelService: ChannelService) {
-    console.log("creation de l'ajout ");
     this.nom = "Nouveau channel";
   }
 

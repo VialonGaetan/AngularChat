@@ -11,6 +11,7 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 export class MessageListComponent implements OnInit {
   public historyLoaded: number;
   private historyAsked: boolean;
+  private historyEnd: boolean;
   private modified: boolean;
   public messageList: MessageModel[];
   private rte: string;
@@ -26,6 +27,7 @@ export class MessageListComponent implements OnInit {
 
   constructor(private messageService: MessageService) {
     this.historyLoaded = 0;
+    this.historyEnd = false;
   }
 
   loadMoreHistory() {
@@ -51,6 +53,7 @@ export class MessageListComponent implements OnInit {
     }
     if (this.modified) {
       this.modified = false;
+      this.historyEnd = false;
       this.messageList = messages.reverse();
       return;
     }
@@ -72,7 +75,9 @@ export class MessageListComponent implements OnInit {
   }
 
   private addHistory(messages: MessageModel[]) {
-
+    if(messages.length == 0){
+      this.historyEnd = true;
+    }
     let first;
     first = this.messageList[0];
     let tab = [];
