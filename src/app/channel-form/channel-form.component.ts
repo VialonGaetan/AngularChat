@@ -22,8 +22,9 @@ export class ChannelFormComponent implements OnInit {
    * ainsi que le channel à envoyer. Ce dernier correspond à l'objet MessageModel que l'utilisateur rempli à travers l'input.
    */
   createChannel() {
-    console.log("Click!",this.nom);
+    console.log("Click!", this.nom);
     this.channelService.createChannel(this.nom);
+    // this.router.navigate('/')
    // this.channelService.createChannel(this.route, this.channel);
   }
 }

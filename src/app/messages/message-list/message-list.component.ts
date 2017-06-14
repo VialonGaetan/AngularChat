@@ -15,6 +15,7 @@ export class MessageListComponent implements OnInit {
   private historyEnd: boolean;
   private modified: boolean;
   public messageList: MessageModel[];
+  public mainList: MessageModel[];
   private rte: string;
   @Input() route: ReplaySubject<string>;
 
@@ -86,20 +87,21 @@ export class MessageListComponent implements OnInit {
       if (first.id != messages[i].id) {
         tab = [messages[i]].concat(tab);
       }
+
+      this.messageList = tab.concat(this.messageList);
+      document.getElementById("scroll").scrollTop = 50;
     }
-
-    this.messageList = tab.concat(this.messageList);
-    document.getElementById("scroll").scrollTop = 50;
   }
-
-  scrollEvent() {
+  scrollEvent()
+  {
     const scrollFromTop = document.getElementById("scroll").scrollTop;
     if (scrollFromTop < 5 && !this.historyEnd) {
       this.loadMoreHistory();
     }
   }
 
-  setPageHeight() {
+  setPageHeight()
+  {
     this.pageHeight = document.getElementById("scroll").offsetHeight;
   }
 }

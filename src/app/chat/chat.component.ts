@@ -32,8 +32,6 @@ export class ChatComponent implements OnInit{
         this.route = id+"/messages";
         this.routeObservable.next(this.route);
         this.id = id;
-        console.log("[chat]"+this.route);
-        console.log("[chat]"+this.id);
       });
   }
 
