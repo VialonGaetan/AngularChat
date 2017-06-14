@@ -60,7 +60,7 @@ export class MessageListComponent implements OnInit {
       this.messageList = messages.reverse();
       return;
     }
-    if ((typeof this.messageList) == "undefined") {
+    if ((typeof this.messageList) === "undefined" || this.messageList.length === 0) {
       this.messageList = messages.reverse();
       return;
     }
