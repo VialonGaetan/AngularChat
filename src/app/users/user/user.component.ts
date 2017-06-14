@@ -7,7 +7,10 @@ import {UserModel} from "../../../shared/models/UserModel";
 @Component({
   selector: "app-user",
   templateUrl: "./user.component.html",
-  styleUrls: ["./user.component.css"]
+  styleUrls: [
+    "./user.component.css",
+    "../../../shared/styles/list-item.css"
+  ]
 })
 export class UserComponent implements OnInit {
 
